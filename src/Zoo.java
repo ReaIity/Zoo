@@ -38,7 +38,6 @@ public class Zoo {
         System.out.println("Добавим животных в вольеры? Y - да, N - нет");
 
         String choiсe = scanner.nextLine();
-        System.out.println(choiсe);
         while (choiсe.equals("Y")) {
             pushAnimal(aviaries, count1, count2);
             System.out.println("Добавим еще животных? Y - да, N - нет");
