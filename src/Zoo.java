@@ -51,39 +51,43 @@ public class Zoo {
     public void pushAnimal(Aviary[] aviaries, int count1, int count2) {
         System.out.println("Какого животного мы добавим?");
         String animal = scanner.nextLine();
-        switch (animal) {
-            case "Лев":
-                if (aviaries[1].animals.size() < count2){
-                    Lion leo = new Lion();
-                    aviaries[1].animals.add(leo);
-                } else {
-                    System.out.println("Вольер заполен");
-                }
-                break;
-            case "Тигр":
-                if (aviaries[1].animals.size() < count2){
-                    Tiger tiger = new Tiger();
-                    aviaries[1].animals.add(tiger);
-                } else {
-                    System.out.println("Вольер заполен");
-                }
-                break;
-            case "Жираф":
-                if (aviaries[0].animals.size() < count1){
-                    Giraffe giraffe = new Giraffe();
-                    aviaries[0].animals.add(giraffe);
-                } else {
-                    System.out.println("Вольер заполен");
-                }
-                break;
-            case "Лемур":
-                if (aviaries[0].animals.size() < count1){
-                    Lemur lemur = new Lemur();
-                    aviaries[0].animals.add(lemur);
-                } else {
-                    System.out.println("Вольер заполен");
-                }
-                break;
+        if(!animal.equals("Лев") && !animal.equals("Тигр") && !animal.equals("Лемур") && !animal.equals("Жираф")) {
+            System.out.println("Мы не можем селить таких животных");
+        } else {
+            switch (animal) {
+                case "Лев":
+                    if (aviaries[1].animals.size() < count2){
+                        Lion leo = new Lion();
+                        aviaries[1].animals.add(leo);
+                    } else {
+                        System.out.println("Вольер заполен");
+                    }
+                    break;
+                case "Тигр":
+                    if (aviaries[1].animals.size() < count2){
+                        Tiger tiger = new Tiger();
+                        aviaries[1].animals.add(tiger);
+                    } else {
+                        System.out.println("Вольер заполен");
+                    }
+                    break;
+                case "Жираф":
+                    if (aviaries[0].animals.size() < count1){
+                        Giraffe giraffe = new Giraffe();
+                        aviaries[0].animals.add(giraffe);
+                    } else {
+                        System.out.println("Вольер заполен");
+                    }
+                    break;
+                case "Лемур":
+                    if (aviaries[0].animals.size() < count1){
+                        Lemur lemur = new Lemur();
+                        aviaries[0].animals.add(lemur);
+                    } else {
+                        System.out.println("Вольер заполен");
+                    }
+                    break;
+            }
         }
     }
 
