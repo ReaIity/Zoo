@@ -4,6 +4,7 @@ public class App {
 
         Zoo centralZoo = new Zoo();
         centralZoo.work();
+
     }
 
 }

@@ -1,7 +1,11 @@
+import java.util.ArrayList;
+
 public class PlantFood extends Food{
 
     @Override
-    public void exist() {
-        System.out.println("Трава и листья для травоядных животных");
+    public void exist(ArrayList<Animal> animals) {
+
+        System.out.println("Вы покормили: " + animals.toString());
+
     }
 }

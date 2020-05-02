@@ -1,4 +1,3 @@
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class Zoo {
@@ -89,17 +88,22 @@ public class Zoo {
     }
 
     public void interaction(Aviary[] aviaries){
-        System.out.println("Вы можете покинуть зоопарк или покормить/сфотографировать животных!");
-        String fatefulChoice = scanner.nextLine();
-        while(!fatefulChoice.equals("Покинуть")) {
-            if ( fatefulChoice.equals("Покормить")) {
-                feedAnimal(scanner, aviaries);
-                System.out.println("Выберите следующий вариант");
-                fatefulChoice = scanner.nextLine();
-            } else if ( fatefulChoice.equals("Сфотографировать")) {
-                photo(scanner, aviaries);
-                System.out.println("Выберите следующий вариант");
-                fatefulChoice = scanner.nextLine();
+        if((aviaries[0].animals.size() == 0) && (aviaries[1].animals.size() == 0)) {
+            System.out.println("Один или все вольеры пусты, скучный зоопарк, придётся придти в другое время");
+            return;
+        } else {
+            System.out.println("Вы можете покинуть зоопарк или покормить/сфотографировать животных!");
+            String fatefulChoice = scanner.nextLine();
+            while (!fatefulChoice.equals("Покинуть")) {
+                if (fatefulChoice.equals("Покормить")) {
+                    feedAnimal(scanner, aviaries);
+                    System.out.println("Выберите следующий вариант");
+                    fatefulChoice = scanner.nextLine();
+                } else if (fatefulChoice.equals("Сфотографировать")) {
+                    photo(scanner, aviaries);
+                    System.out.println("Выберите следующий вариант");
+                    fatefulChoice = scanner.nextLine();
+                }
             }
         }
     }
@@ -123,25 +127,42 @@ public class Zoo {
         String animal = scanner.nextLine();
 
         if (animal.equals("Хищники")) {
-            aviaries[1].feed(animal);
+
+            System.out.println("Чем вы хотите накормить хищников?");
+            String food = scanner.nextLine();
+
+            while(!food.equals("Мясо")) {
+                System.out.println("Хищники это не едят, выберите другой вариант!");
+                food = scanner.nextLine();
+            }
+
+            aviaries[1].feed(animal, aviaries[1].animals);
+
+
         } else if (animal.equals("Травоядные")) {
-            aviaries[0].feed(animal);
+
+            System.out.println("Чем вы хотите накормить травоядных?");
+            String food = scanner.nextLine();
+
+            while(!food.equals("Трава")) {
+                System.out.println("Травоядные это не едят, выберите другой вариант!");
+                food = scanner.nextLine();
+            }
+
+            aviaries[0].feed(animal, aviaries[0].animals);
+
         }
 
     }
 
     private static int readInt (Scanner scanner) {
 
-        int result;
+        int result = Integer.parseInt(scanner.nextLine());
 
-        while(true) {
-            try {
-                result = Integer.parseInt(scanner.nextLine());
-                break;
-            } catch (NumberFormatException e) {
-                System.out.println("Вы ввели недопустимую вместительность вольера");
-
-            }
+        while(result <= 0) {
+            System.out.println("Недопустимая вместительность вольера");
+            System.out.println("Введите другое число");
+            result = Integer.parseInt(scanner.nextLine());
         }
         return result;
     }

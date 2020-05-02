@@ -21,18 +21,18 @@ public class Aviary {
         }
     }
 
-    public void feed(String animal) {
+    public void feed(String animal, ArrayList<Animal> animals) {
 
         switch (animal) {
             case "Хищники":
                 AnimalFood aFood = new AnimalFood();
-                aFood.exist();
-                System.out.println("Хищники едят мясо");
+                aFood.exist(animals);
+                System.out.println("Вы покормили хищников");
                 break;
             case "Травоядные":
                 PlantFood pFood = new PlantFood();
-                pFood.exist();
-                System.out.println("Травоядные едят траву и листья");
+                pFood.exist(animals);
+                System.out.println("Вы покормили травоядных");
                 break;
         }
     }
