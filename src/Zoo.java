@@ -161,10 +161,18 @@ public class Zoo {
 
     private static int readInt (Scanner scanner) {
 
-        int result = Integer.parseInt(scanner.nextLine());
+        int result = 0;
 
-        while(result <= 0) {
-            System.out.println("Недопустимая вместительность вольера");
+        try {
+            result = Integer.parseInt(scanner.nextLine());
+            while(result <= 0) {
+                System.out.println("Недопустимая вместительность вольера");
+                System.out.println("Введите другое число");
+                result = Integer.parseInt(scanner.nextLine());
+            }
+
+        } catch (NumberFormatException e) {
+            System.out.println("Введенная строка не является числом");
             System.out.println("Введите другое число");
             result = Integer.parseInt(scanner.nextLine());
         }
